@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container h-100 mb-3">
+    <div class="d-flex justify-content-center h-100">
+      <form action="{% url 'search' %}" method="get">
+        <div class="searchbar">
+            <input id="user-input" class="search_input" type="text" name="q" placeholder="Search...">
+            <a href="{% url 'search' %}" class="search_icon"><i id="search-icon" class="fa fa-search"></i></a>
+        </div>
+      </form>
+    </div>
+</div>
+
+<div class="container">
+  <a href="{% url 'add' %}" class="btn btn-info">Add Item</a>  
+</div>
+
+<div class="container">  
+  <div class="row">
+    {% for item in items %}
+    <div class="col-sm-6 col-lg-3 d-flex">
+      <div id="replaceable-content" class="card mt-3 text-white bg-dark mb-3 flex-fill">  
+        <!--<img class="card-img-top" alt="Card header image" src="{{item.image}}">-->
+        <div id="replaceable-content" class="card-body">  
+          <h5 class="card-title">{{item.name}} @{{item.location}} </h5>    
+          <p class="card-text"><span>&#8358;</span>{{item.price.last.price}}</p>
+          <p class="card-text">Average Price: <span>&#8358;</span>{{item.avg_price}}</p>
+          <p class="card-text">Min Price: <span>&#8358;</span>{{item.min_price}}</p>
+          <p class="card-text">Max Price: <span>&#8358;</span>{{item.max_price}}</p>  
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>  
+</div>
+{% endblock content %}
