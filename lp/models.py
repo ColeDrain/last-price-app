@@ -10,7 +10,7 @@ class Price(models.Model):
 
 class Product(models.Model):
 	name = models.CharField(max_length=200)
-	image = models.ImageField(upload_to='uploads/')
+	#image = models.ImageField(upload_to='uploads/')
 	location = models.CharField(max_length=200)
 	price = models.ManyToManyField(Price)
 

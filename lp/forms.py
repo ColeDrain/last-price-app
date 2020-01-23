@@ -5,7 +5,7 @@ class AddItemForm(forms.ModelForm):
 	
 	class Meta:
 		model = Product
-		fields = ('name', 'image', 'location',)
+		fields = ('name','location',)
 
 class PriceForm(forms.ModelForm):
 

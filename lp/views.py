@@ -26,7 +26,7 @@ def add(request):
 			# Store data from form in variables
 			name = add_form.cleaned_data.get('name')
 			location = add_form.cleaned_data.get('location')
-			image = add_form.cleaned_data.get('image')
+			#image = add_form.cleaned_data.get('image')
 			price = price_form.cleaned_data.get('price')
 			date_uploaded = price_form.cleaned_data.get('date_uploaded')
 			if Product.objects.filter(name=name, location=location).exists():
@@ -44,7 +44,6 @@ def add(request):
 				)
 				product = Product(
 					name=name,
-					image=image,
 					location=location,
 				)
 				product.save()
