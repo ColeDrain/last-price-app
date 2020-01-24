@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-8">
-			<form method="post" novalidate enctype="multipart/form-data">
+			<form method="post" novalidate>
 			  {% csrf_token %}
 			  {{add_form}}
 			  {{price_form}}
