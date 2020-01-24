@@ -28,19 +28,16 @@ def add(request):
 			location = add_form.cleaned_data.get('location')
 			#image = add_form.cleaned_data.get('image')
 			price = price_form.cleaned_data.get('price')
-			date_uploaded = price_form.cleaned_data.get('date_uploaded')
 			if Product.objects.filter(name=name, location=location).exists():
 				item = Product.objects.get(name=name, location=location)
 				pr = Price.objects.create(
-					price=price,
-					date_uploaded=date_uploaded
+					price=price
 				)
 				item.price.add(pr)
 				return redirect('home')
 			else:
 				pr = Price.objects.create(
-					price=price,
-					date_uploaded=date_uploaded
+					price=price
 				)
 				product = Product(
 					name=name,
