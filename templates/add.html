@@ -1,15 +1,21 @@
 {% extends 'base.html' %}
-
+{% load bootstrap4 %}
 {% block content %}
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="col-8">
-			<form method="post" novalidate>
-			  {% csrf_token %}
-			  {{add_form}}
-			  {{price_form}}
-			  <button type="submit" class="btn btn-success">Submit</button>
-			</form>
+<div class="jumbotron mt-5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-8">
+				<h1 class="text-center">ADD AN ITEM</h1>
+				<form method="post" novalidate class="form">
+				  {% csrf_token %}
+				  {% bootstrap_field add_form.name placeholder="name of item"%}
+				  {% bootstrap_field add_form.location placeholder="where did you buy it?"%}
+				  {% bootstrap_form price_form size="small" %}
+				  {% buttons %}
+				  	<button type="submit" class="btn btn-success">Submit</button>
+				  {% endbuttons %}
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

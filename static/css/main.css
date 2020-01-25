@@ -45,14 +45,3 @@ border-radius: 50%;
 color:white;
 text-decoration:none;
 }
-
-@media screen and (min-width: 768px)
-.jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
-}
-
-@media screen and (min-width: 768px)
-.jumbotron .h1, .jumbotron h1 {
-    font-size: 63px;
-}

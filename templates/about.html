@@ -1,3 +1,11 @@
 {% extends 'base.html' %}
-
-{% block content %}{% endblock content %}
+{% load static %}
+{% block content %}
+	<div class="jumbotron text-center mt-3">
+	    <div class="container">  
+	      <h1 class="display-4">About Me</h1>
+	      <img src="{% static 'images/ugo3.png' %}">
+	      <p class="lead">My name is Ugochukwu Onyecuchi, I am a programmer mainly into web development. I love solving problems. In my spare time, I love playing chess, scrabble or browsing the internet.</p>
+	    </div>  
+	</div>
+{% endblock content %}
