@@ -9,8 +9,8 @@
 				<form method="post" novalidate class="form">
 				  {% csrf_token %}
 				  {% bootstrap_field add_form.name placeholder="name of item"%}
-				  {% bootstrap_field add_form.location placeholder="where did you buy it?"%}
-				  {% bootstrap_form price_form size="small" %}
+				  {% bootstrap_field add_form.location placeholder="where you got it?" %}
+				  {% bootstrap_form price_form %}
 				  {% buttons %}
 				  	<button type="submit" class="btn btn-success">Submit</button>
 				  {% endbuttons %}
