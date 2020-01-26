@@ -81,7 +81,14 @@ def feedback(request):
 				headers = {'Reply-To': user_email},
 				)
 			email.send()
-			return redirect ('feedback')
+			request.session['mail_sent'] = True
+			return redirect ('success')
 	else:
 		form = FeedbackForm()	
 	return render(request, 'feedback.html', {'form':form})
+
+def success(request):
+	if not request.session.pop('mail_sent', False):
+		return redirect('home')
+	else:
+		return render(request, 'success.html')
