@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-	<div class="jumbotron text-center mt-3">
-	    <div class="container">  
-	      <h1 class="display-4">About Me</h1>
-	      <img src="{% static 'ugo3.png' %}">
-	      <p class="lead">My name is Ugochukwu Onyecuchi, I am a programmer mainly into web development. I love solving problems. In my spare time, I love playing chess, scrabble or browsing the internet.</p>
-	    </div>  
-	</div>
+<section>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-6 mt-5">
+    			<div class="text-center bg-light">
+    				<h1 class="display-4">About Me</h1>
+					<p class="lead">My name is Ugochukwu Onyecuchi, I am a programmer mainly into web development. I love solving problems. In my spare time, I love playing chess, scrabble or browsing the internet.</p>
+					<a href="https://web.facebook.com/profile.php?id=100007069968391"><i class="fa fa-facebook fa-lg"></i></a>
+					<a href="https://github.com/ColeDrain?tab=repositories"><i class="fa fa-github fa-lg text-dark"></i></a>
+    			</div>
+    		</div>
+    		<div class="col-md-6 mt-1">
+    			<img class="img-fluid mx-auto d-block" src="{% static 'ugo4.png' %}">
+    		</div>
+    	</div>
+    </div>
+</section>
 {% endblock content %}
