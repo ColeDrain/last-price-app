@@ -12,3 +12,8 @@ class PriceForm(forms.ModelForm):
 	class Meta:
 		model = Price
 		fields = ('price',)
+
+class FeedbackForm(forms.Form):
+	name = forms.CharField(required=True)
+	email = forms.EmailField(required=True)
+	message = forms.CharField(required=True, widget=forms.Textarea)

@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
-from .forms import AddItemForm, PriceForm
+from .forms import AddItemForm, PriceForm, FeedbackForm
 from .models import Product, Price
 from django.db.models import Q
 from django.db.models import Avg, Max, Min
-
+from lastprice.settings import EMAIL_HOST_USER
+from django.core.mail import EmailMessage
+from django.template.loader import get_template
 # Create your views here.
 def home(request):
 	items = Product.objects.all().annotate(avg_price=Avg('price__price'), max_price=Max('price__price'), min_price=Min('price__price')).order_by('name')
@@ -56,4 +58,30 @@ def about(request):
 	return render(request, 'about.html')
 
 def feedback(request):
-	return render(request, 'feedback.html')
+	if request.method == 'POST':
+		form = FeedbackForm(request.POST)
+		if form.is_valid():
+			name = form.cleaned_data.get('name')
+			user_email = form.cleaned_data.get('email')
+			message = form.cleaned_data.get('message')
+
+			template = get_template('feedback_template.txt') 
+			context = {
+				'name': name,
+				'email': user_email,
+				'message': message,
+			}
+
+			content = template.render(context)
+			email = EmailMessage(
+				"New contact form submission (LastPrice.ng)",
+				content,
+				user_email,
+				[EMAIL_HOST_USER],
+				headers = {'Reply-To': user_email},
+				)
+			email.send()
+			return redirect ('feedback')
+	else:
+		form = FeedbackForm()	
+	return render(request, 'feedback.html', {'form':form})
